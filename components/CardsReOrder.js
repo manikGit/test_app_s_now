@@ -98,14 +98,15 @@ class Cards extends Component {
         let user10data = jsonData.slice(0, 10)
         this.setState({ initialData: user10data, cardData: [...this.state.cardData, ...user10data], loadingState: false })
       });
-
-
   }
   onDragStart = (e, index) => {
     this.draggedItem = this.state.cardData[index];
-    e.dataTransfer.effectAllowed = "drag";
+    // e.dataTransfer.effectAllowed = "drag";
+    event.dataTransfer.setData('text/html', null)
+    console.log("ondragstart");
   }
   onDragOver = (event, index) => {
+    console.log("onDragOver");
     const draggedOverItem = this.state.cardData[index];
     if (this.draggedItem === draggedOverItem) {
       return;
@@ -146,7 +147,7 @@ class Cards extends Component {
               return <List key={i} className="listStyle" style={{ paddingLeft: '2vh', paddingRight: '2vh' }}  >
                 <ListItem style={{ outlineColor: '#293e40', padding: '0px' }} tabIndex="0" onDragOver={(e) => this.onDragOver(e, i)}
                 >
-                  <Card className="draggable" draggable
+                  <Card  draggable
                     onDragStart={e => this.onDragStart(e, i)}
                     onDragEnd={e => this.onDragEnd(e)}
                   >
