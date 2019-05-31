@@ -1,0 +1,50 @@
+body{
+  margin: 0px;
+}
+.MuiCard-root {
+  width: 100%
+}
+.sn_logo{
+  height: 25px;
+  padding: 15px;
+}
+.searchBoxDiv {
+  text-align: center;
+  height: 40px;
+  background-color: #293e40 !important;
+
+}
+#searchBox{
+  outline: 0;
+  font-size: 15px;
+  height: 34px;
+  margin-top: 2px;
+  width: 244px;
+  line-height: 42px;
+  padding: 0 16px;
+  background-color: #293e40;
+  color:white;
+  border: 1px solid #81B5A1;
+  -webkit-border-radius: 4px 0 0 4px;
+  border-radius: 4px;
+}
+.sectionHeader{
+  background-color: #E2E2F8;
+  height: 60px
+}
+.divStyle {
+  height: calc(100vh - 100px);
+  overflow: auto;
+  background-color: #81B5A1
+}
+.listStyle{
+  padding-left: 1vh;
+  padding-right: 1vh;
+  list-style: none;
+}
+.footerStyle {
+  height:30px
+}
+
+
+
