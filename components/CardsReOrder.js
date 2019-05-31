@@ -48,7 +48,6 @@ class Cards extends Component {
       this.setState({ cardData: this.state.initialData })
     }
   }
-
   loadMoreCards() {
     if (this.state.loadingState) {
       return;
@@ -58,12 +57,8 @@ class Cards extends Component {
     }
     let cardShowNum = this.state.cardShowNum;
     this.setState({ loadingState: true });
-    // let obj = {
-    //   mode: 'cors'
-    // }
     console.log("total cards: " + this.state.cardData.length)
     setTimeout(() => {
-
       axios.get('https://uinames.com/api/?amount=10&region=germany&ext')
         .then((response) => {
           let data = response.data;
@@ -89,35 +84,11 @@ class Cards extends Component {
       // console.log("key pressed");
       this.setState({ loadingState: false });
     });
-    // let obj = {
-    //   mode: 'no-cors',
-    //   headers: {
-    //     'Access-Control-Allow-Headers': 'Content-Type',
-
-    //   }
-    // }
     console.log("componentDidMount called ");
-    // https://uinames.com/api/?amount=2&ext
-
-    // fetch('https://uinames.com/api/?amount=10&region=germany&ext', obj)
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     // console.log("data: " + JSON.stringify(data))
-    //     console.log("Loading from https://uinames.com")
-    //     this.setState({ initialData: data, cardData: data })
-    //   })
-    //   .catch((err) => {
-    //     //uiname.com Resource Limit Reached
-    //     console.log("Loading from local json")
-    //     let user10data = jsonData.slice(0, 10)
-    //     this.setState({ initialData: user10data, cardData: [...this.state.cardData, ...user10data], loadingState: false })
-    //   });
-
-
     axios.get('https://uinames.com/api/?amount=10&region=germany&ext')
       .then((response) => {
         let data = response.data;
-        console.log("response.data " + JSON.stringify(response.data));
+        console.log("data loaded from  https://uinames.com");
         this.setState({ initialData: data, cardData: data })
       })
       .catch((error) => {
@@ -132,26 +103,25 @@ class Cards extends Component {
   }
   onDragStart = (e, index) => {
     this.draggedItem = this.state.cardData[index];
-    // e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.effectAllowed = "drag";
   }
   onDragOver = (event, index) => {
     const draggedOverItem = this.state.cardData[index];
     if (this.draggedItem === draggedOverItem) {
       return;
     }
-    // event.target.style.cursor = 'move'; 
+    // event.target.style.cursor = 'pointer'; 
     let items = this.state.cardData.filter(item => item !== this.draggedItem);
     items.splice(index, 0, this.draggedItem);
     this.setState({ cardData: items });
 
   }
   onDragEnd = (event) => {
-    // event.target.style.cursor = 'pointer'; 
+    // event.target.style.cursor = 'normal'; 
     this.draggedIdx = null;
   }
 
   render() {
-
     return (
       <React.Fragment>
         <header className="headerStyle">
@@ -173,8 +143,8 @@ class Cards extends Component {
         <body>
           <div ref="iScroll" className="divStyle" >
             {this.state.cardData.map((data, i) => {
-              return <List className="listStyle" >
-                <ListItem style={{ outlineColor: '#293e40', padding: '5px' }} tabIndex="0" onDragOver={(e) => this.onDragOver(e, i)}
+              return <List key={i} className="listStyle" style={{ paddingLeft: '2vh', paddingRight: '2vh' }}  >
+                <ListItem style={{ outlineColor: '#293e40', padding: '0px' }} tabIndex="0" onDragOver={(e) => this.onDragOver(e, i)}
                 >
                   <Card className="draggable" draggable
                     onDragStart={e => this.onDragStart(e, i)}
