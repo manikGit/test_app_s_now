@@ -44,8 +44,8 @@ body{
 }
 .innerListStyle:focus{
 outline-color: '#293e40';
-outline-style: 'solid';
-outline-width: '2px';
+outline-style: solid;
+outline-width: 2px;
 }
 .footerStyle {
   height:30px

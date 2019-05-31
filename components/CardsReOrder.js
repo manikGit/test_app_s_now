@@ -81,9 +81,11 @@ class Cards extends Component {
     });
 
     this.refs.searchText.addEventListener("keyup", () => {
-      // console.log("key pressed");
-      this.setState({ loadingState: false });
+      console.log("key pressed");
+
     });
+    this.refs.searchText.click();         
+
     console.log("componentDidMount called ");
     axios.get('https://uinames.com/api/?amount=10&region=germany&ext')
       .then((response) => {
@@ -134,10 +136,13 @@ class Cards extends Component {
               label="Search..."
               placeholder="Type here to search"
               ref="searchText"
+              
               // className={classes.textField}
               margin="normal"
               value={this.state.inputValue}
               onChange={this.handleChange}
+              tabIndex="0"
+
             />
           </section>
         </header>
