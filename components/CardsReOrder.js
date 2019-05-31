@@ -145,9 +145,9 @@ class Cards extends Component {
           <div ref="iScroll" className="divStyle" >
             {this.state.cardData.map((data, i) => {
               return <List key={i} className="listStyle" style={{ paddingLeft: '2vh', paddingRight: '2vh' }}  >
-                <ListItem style={{ outlineColor: '#293e40', padding: '0px' }} tabIndex="0" onDragOver={(e) => this.onDragOver(e, i)}
+                <ListItem className="innerListStyle" style={{ outlineColor: '#293e40', padding: '0px' }} tabIndex="0" onDragOver={(e) => this.onDragOver(e, i)}
                 >
-                  <Card  draggable
+                  <Card draggable
                     onDragStart={e => this.onDragStart(e, i)}
                     onDragEnd={e => this.onDragEnd(e)}
                   >

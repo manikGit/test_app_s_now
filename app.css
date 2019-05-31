@@ -42,6 +42,11 @@ body{
   padding-right: 1vh;
   list-style: none;
 }
+.innerListStyle:focus{
+outline-color: '#293e40';
+outline-style: 'solid';
+outline-width: '2px';
+}
 .footerStyle {
   height:30px
 }
