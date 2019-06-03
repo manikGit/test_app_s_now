@@ -41,7 +41,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: "none",
   // padding: grid * 2,
   padding: '0px',
-  margin: isDragging ? '0px 0px 0px 20px' : `0 0 ${grid}px 0`,
+  margin: isDragging ? '0px 0px 0px 10px' : `0 0 ${grid}px 0`,
 
 
   // change background colour if dragging
@@ -49,7 +49,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   outlineColor: '#293E40',
   // styles we need to apply on draggables
   ...draggableStyle
-});
+});     
 
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? "transparent" : "#81B5A1",
