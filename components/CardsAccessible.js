@@ -42,7 +42,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   // padding: grid * 2,
   padding: '0px',
   margin: isDragging ? '0px 0px 0px 20px' : `0 0 ${grid}px 0`,
-  
+
 
   // change background colour if dragging
   background: isDragging ? "transparent" : "transparent",
@@ -184,7 +184,7 @@ class CardsAccessible extends Component {
           <section className="sectionHeader">
           </section>
           <section className="searchBoxDiv">
-          <label style={{color:'white'}}> </label>
+            <label style={{ color: 'white' }}> </label>
             <input
               id="searchBox"
               label="Search..."
@@ -197,7 +197,7 @@ class CardsAccessible extends Component {
               tabIndex="0"
               autoFocus
               aria-label="Type here to search"
-              
+
 
             />
           </section>
@@ -261,8 +261,11 @@ class CardsAccessible extends Component {
                 </div>
               )}
             </Droppable>
+            {this.state.loadingState ? <p className="loading"> loading...</p> : ""}
           </DragDropContext>
+
         </div>
+        <footer className="footerStyle"></footer>
       </React.Fragment>
     );
   }

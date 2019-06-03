@@ -33,7 +33,7 @@ body{
   height: 60px
 }
 .divStyle {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 130px);
   overflow: auto;
   background-color: #81B5A1
 }
@@ -48,7 +48,11 @@ outline-style: solid;
 outline-width: 2px;
 }
 .footerStyle {
-  height:30px
+  height:30px;
+  background-color:black;
+}
+.loading{
+  margin-left: 4vh;
 }
 
 
