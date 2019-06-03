@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+ 
 import jsonData from './json/jsonData.json';
 
 import '../app.css';
