@@ -261,7 +261,7 @@ class CardsAccessible extends Component {
                 </div>
               )}
             </Droppable>
-            {this.state.loadingState ? <p className="loading"> loading...</p> : ""}
+            
           </DragDropContext>
 
         </div>
