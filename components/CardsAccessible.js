@@ -18,53 +18,34 @@ import jsonData from './json/jsonData.json';
 
 import '../app.css';
 
-// fake data generator
-const getItems = count =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
-    id: `item-${k}`,
-    content: `item ${k}`
-  }));
-
-// a little function to help us with reordering the result
-const reorder = (list, startIndex, endIndex) => {
+const reorder = (list, sIndex, eIndex) => {
   const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
+  const [removed] = result.splice(sIndex, 1);
+  result.splice(eIndex, 0, removed);
   return result;
 };
 
 const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
   userSelect: "none",
-  // padding: grid * 2,
   padding: '0px',
   margin: isDragging ? '0px 0px 0px 10px' : `0 0 ${grid}px 0`,
-
-
-  // change background colour if dragging
   background: isDragging ? "transparent" : "transparent",
   outlineColor: '#293E40',
-  // styles we need to apply on draggables
   ...draggableStyle
-});     
+});
 
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? "transparent" : "#81B5A1",
-  // padding: '0px',
-  width: '100%',
-  // paddingLeft: '2vh',
-  // paddingRight: '2vh'
-
+  width: '100%'
 });
 
 class CardsAccessible extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: getItems(10),
+      items: [],
       inputValue: '',
       initialData: [],
       cardData: [],
@@ -98,7 +79,6 @@ class CardsAccessible extends Component {
   }
   componentDidMount() {
     console.log("componentDidMount called ");
-
     axios.get('https://uinames.com/api/?amount=10&region=germany&ext')
       .then((response) => {
         let data = response.data;
@@ -120,7 +100,6 @@ class CardsAccessible extends Component {
     //   } else {
     //     this.setState({ loadingState: false });
     //   }
-
     // });
 
     this.refs.iScroll.addEventListener("scroll", () => {
@@ -166,7 +145,6 @@ class CardsAccessible extends Component {
       result.source.index,
       result.destination.index
     );
-
     this.setState({
       items
     });
@@ -175,8 +153,6 @@ class CardsAccessible extends Component {
   onDragStart = () => {
     this.setState({ dragging: true })
   }
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
   render() {
     return (
       <React.Fragment>
@@ -197,8 +173,6 @@ class CardsAccessible extends Component {
               tabIndex="0"
               autoFocus
               aria-label="Type here to search"
-
-
             />
           </section>
         </header>
@@ -211,7 +185,6 @@ class CardsAccessible extends Component {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                   style={getListStyle(snapshot.isDraggingOver)}
-
                 >
                   {this.state.items.map((data, i) => (
                     <Draggable key={`item-${i}`} draggableId={`item-${i}`} index={i} aria-roledescription="Draggable item. Press space bar to lift">
@@ -225,7 +198,6 @@ class CardsAccessible extends Component {
                             snapshot.isDragging,
                             provided.draggableProps.style
                           )}
-
                         >
                           <List key={i} className="listStyle" style={{ paddingLeft: '4vh', paddingRight: '4vh' }}  >
                             <ListItem className="innerListStyle" style={{ outlineColor: '#293e40', padding: '0px' }} onDragOver={(e) => this.onDragOver(e, i)}
@@ -261,9 +233,7 @@ class CardsAccessible extends Component {
                 </div>
               )}
             </Droppable>
-            
           </DragDropContext>
-
         </div>
         <footer className="footerStyle"></footer>
       </React.Fragment>
